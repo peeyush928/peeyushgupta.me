@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Peeyush Gupta · Salesforce Admin/Developer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+:root{--bg:#F5F8F5;--surface:#FFFFFF;--ink:#12201A;--muted:#4F6358;--blue:#0A7F57;--sky:#D5EEE2;--line:#CBDDD2;--amber:#E39B00;--code:#0F1C16;--codeink:#E1F2E8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1510;--surface:#12241B;--ink:#E7F4EC;--muted:#9FB8A9;--blue:#3DD598;--sky:#173A2A;--line:#21432F;--amber:#F2B53A;--code:#050D09;--codeink:#E1F2E8}}
+:root[data-theme="dark"]{--bg:#0A1510;--surface:#12241B;--ink:#E7F4EC;--muted:#9FB8A9;--blue:#3DD598;--sky:#173A2A;--line:#21432F;--amber:#F2B53A;--code:#050D09;--codeink:#E1F2E8}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+section{padding:72px 0 8px}
+h2{font-size:clamp(28px,4vw,40px);font-weight:800;margin-bottom:28px}
+p{margin:0 0 14px;max-width:68ch}
+nav{display:flex;gap:6px 20px;flex-wrap:wrap;padding:20px 0;font-weight:500}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--blue)}
+nav .brand{color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-weight:800;margin-right:auto}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:48px 0 24px}
+.hero h1{font-size:clamp(44px,8vw,88px);font-weight:800;letter-spacing:-.03em}
+.hero .role{font-size:clamp(20px,2.6vw,26px);color:var(--blue);font-family:"Bricolage Grotesque",sans-serif;font-weight:700;margin:14px 0 18px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:500;text-decoration:none;border:2px solid var(--blue)}
+.btn.main{background:var(--blue);color:#fff}
+.btn.alt{color:var(--blue)}
+.btn:hover{transform:translateY(-1px)}
+pre{margin:0;background:var(--code);color:var(--codeink);border-radius:14px;padding:22px;overflow-x:auto;font:14px/1.7 ui-monospace,Menlo,Consolas,monospace;border:1px solid var(--line)}
+.k{color:#6EE7B7}.c{color:#7FA08E}.s{color:#F2B53A}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;color:var(--muted)}
+.facts b{color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-size:22px;margin-right:6px}
+.timeline{border-left:3px solid var(--sky);margin-left:6px}
+.job{position:relative;padding:0 0 34px 28px}
+.job::before{content:"";position:absolute;left:-10px;top:6px;width:17px;height:17px;border-radius:50%;background:var(--blue);border:3px solid var(--bg)}
+.job h3{font-size:22px}
+.job .when{color:var(--muted);margin-bottom:10px}
+ul{margin:0;padding-left:20px}
+li{margin-bottom:8px;max-width:72ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px}
+.card h3{font-size:21px;margin-bottom:12px}
+.card.feat{border-left:6px solid var(--blue)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{background:var(--sky);color:var(--ink);padding:5px 12px;border-radius:999px;font-size:15px}
+.skillrow{margin-bottom:20px}
+.skillrow h3{font-size:18px;margin-bottom:10px;color:var(--muted)}
+.award{background:var(--sky);border-radius:16px;padding:24px;margin-top:20px}
+.award h3{font-size:20px;margin-bottom:6px}
+form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;gap:18px;max-width:640px}
+label{display:grid;gap:6px;font-weight:500}
+input,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;width:100%}
+input:focus,textarea:focus{border-color:var(--blue)}
+textarea{min-height:140px;resize:vertical}
+button.btn{cursor:pointer;font:inherit;font-weight:500;justify-self:start}
+.note{color:var(--muted);font-size:15px;margin:0}
+.ok{color:var(--blue);font-weight:500}
+footer{padding:56px 0 40px;color:var(--muted);font-size:15px}
+@media (max-width:800px){.hero{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){.hero h1{animation:rise .7s ease both}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}}
+:root{--glass:color-mix(in srgb,var(--surface) 62%,transparent);--edge:color-mix(in srgb,var(--blue) 22%,var(--line));--grad:linear-gradient(120deg,#0A7F57,#0F9468 55%,#0B6E63)}
+body{background:radial-gradient(900px 520px at 85% -5%,color-mix(in srgb,var(--blue) 26%,transparent),transparent 70%),radial-gradient(700px 480px at -5% 30%,color-mix(in srgb,#E3A21A 12%,transparent),transparent 70%),radial-gradient(800px 500px at 100% 75%,color-mix(in srgb,#2FB58A 14%,transparent),transparent 70%),var(--bg);background-attachment:fixed}
+section{padding:88px 0 8px}
+h2{letter-spacing:-.02em}
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 10px);z-index:20;margin-top:12px;padding:12px 22px;border-radius:999px;background:var(--glass);border:1px solid var(--edge);-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);box-shadow:0 8px 30px -12px rgba(1,60,120,.35)}
+nav a:not(.brand){padding:4px 10px;border-radius:999px;transition:background .2s,color .2s}
+nav a:not(.brand):hover{background:var(--sky)}
+.hero{padding:72px 0 32px}
+.hero h1{font-size:clamp(48px,9vw,104px);letter-spacing:-.04em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.hero .role{color:var(--ink)}
+.btn{border:0;padding:14px 26px;transition:transform .2s,box-shadow .2s}
+.btn.main{background:var(--grad);box-shadow:0 10px 28px -10px var(--blue)}
+.btn.main:hover{box-shadow:0 14px 34px -8px var(--blue)}
+.btn.alt{background:var(--glass);border:1px solid var(--edge);color:var(--ink);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+pre{position:relative;padding-top:48px;border-radius:20px;border:1px solid var(--edge);box-shadow:0 30px 60px -28px rgba(1,60,120,.6)}
+pre::before{content:"";position:absolute;top:18px;left:20px;width:11px;height:11px;border-radius:50%;background:#FF5F57;box-shadow:18px 0 #FEBC2E,36px 0 #28C840}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:40px}
+.facts span{display:block;padding:22px 24px;border-radius:22px;background:var(--glass);border:1px solid var(--edge);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.facts b{display:block;font-size:44px;line-height:1.1;margin:0 0 4px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.timeline{border-left:2px solid var(--edge)}
+.job::before{left:-9px;background:var(--grad);border:3px solid var(--bg);box-shadow:0 0 0 5px color-mix(in srgb,var(--blue) 22%,transparent)}
+.card,.skillrow,.award,form{background:var(--glass);border:1px solid var(--edge);border-radius:24px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.card{transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 24px 44px -24px rgba(1,60,120,.55);border-color:var(--blue)}
+.card.feat{border-left:1px solid var(--edge);position:relative;overflow:hidden}
+.card.feat::after{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--grad)}
+.tags span{background:color-mix(in srgb,var(--blue) 10%,transparent);border:1px solid var(--edge);padding:5px 13px}
+#skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+#skills h2,#skills .award{grid-column:1/-1}
+.skillrow{margin:0;padding:24px}
+.skillrow h3{color:var(--ink)}
+.award{background:var(--grad);color:#fff;border:0}
+.award h3,.award p{color:#fff}
+form{padding:32px;box-shadow:0 30px 60px -36px rgba(1,60,120,.55)}
+input,textarea{border-radius:14px;transition:border-color .2s,box-shadow .2s}
+input:focus,textarea:focus{outline:none;box-shadow:0 0 0 4px color-mix(in srgb,var(--blue) 25%,transparent)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:1}
+.card{position:relative;overflow:hidden}
+.aboutgrid{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
+.photo{margin:0;width:100%;aspect-ratio:4/5;border-radius:28px;overflow:hidden;display:grid;place-items:center;background:var(--grad);color:#fff;font:800 80px/1 "Bricolage Grotesque",sans-serif;border:1px solid var(--edge);box-shadow:0 30px 60px -30px rgba(1,60,120,.6)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:800px){.aboutgrid{grid-template-columns:1fr;gap:28px}.photo{max-width:260px}}
+nav{box-shadow:0 8px 30px -12px rgba(10,60,40,.35)}
+pre{box-shadow:0 30px 60px -28px rgba(5,25,15,.6)}
+.card:hover{box-shadow:0 24px 44px -24px rgba(10,60,40,.5)}
+form{box-shadow:0 30px 60px -36px rgba(10,60,40,.5)}
+.photo{box-shadow:0 30px 60px -30px rgba(10,60,40,.55)}
+footer.bar{position:relative;z-index:1;margin-top:240px;padding:0;background:var(--glass);color:var(--muted);border-top:1px solid var(--edge);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.bar .in{max-width:none;margin:0;padding:30px 24px;display:flex;align-items:center;gap:16px 32px;flex-wrap:wrap}
+.bar .logo{font:800 28px/1 "Bricolage Grotesque",system-ui,sans-serif;color:var(--ink);letter-spacing:-.02em;text-decoration:none}
+.bar .logo i{font-style:normal;color:var(--blue)}
+.bar .tag{font-size:15px;margin-right:auto}
+.bar .icons{display:flex;gap:20px;align-items:center}
+.bar .icons a{color:var(--muted);display:inline-flex;transition:color .2s,transform .2s}
+.bar .icons a:hover{color:var(--blue);transform:translateY(-2px)}
+.bar .copy{font-size:14px}
+nav{align-items:baseline}
+.note.err{color:#C2410C;font-weight:500}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;z-index:50;max-width:min(92vw,420px);padding:14px 22px;border-radius:999px;background:var(--blue);color:#fff;font-weight:500;box-shadow:0 14px 34px -12px rgba(0,0,0,.45);transition:opacity .35s,transform .35s}
+.toast.bad{background:#C2410C}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-color-scheme:dark){.note.err{color:#FB923C}.toast{color:#04140D}.toast.bad{background:#FB923C;color:#2A0D02}}
+.photo{position:relative}
+.photo::before{content:"PG"}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="wrap">
+<nav aria-label="Main"><a class="brand" href="#top">Peeyush Gupta</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#beyond">Beyond code</a><a href="#contact">Contact</a></nav>
+
+<header class="hero" id="top">
+<div>
+<h1>Peeyush Gupta</h1>
+<div class="role">Salesforce Admin/Developer</div>
+<p>I build Apex, Lightning Web Components and API integrations for lending and payment teams, and ship them through sandbox, UAT and production.</p>
+<div class="btns"><a class="btn main" href="#contact">Get in touch</a><a class="btn alt" href="#projects">See my work</a></div>
+</div>
+<pre aria-label="Sample Apex code"><span class="c">// Bulkified by default</span>
+<span class="k">public with sharing class</span> PaymentService {
+  <span class="k">public static void</span> realize(<span class="k">Set</span>&lt;Id&gt; ids) {
+    <span class="k">List</span>&lt;Payment__c&gt; rows = [
+      <span class="k">SELECT</span> Id, Status__c
+      <span class="k">FROM</span> Payment__c
+      <span class="k">WHERE</span> Id <span class="k">IN</span> :ids
+    ];
+    <span class="c">// one DML, one callout queue</span>
+    System.enqueueJob(<span class="k">new</span> RealizeJob(rows));
+  }
+}</pre>
+</header>
+
+<section id="about">
+<h2>About me</h2>
+<div class="aboutgrid">
+<figure class="photo" aria-label="Photo of Peeyush Gupta"><img src="https://i.postimg.cc/zv5xmyTD/portfolio-img.jpg" alt="Peeyush Gupta" onerror="this.remove()"></figure>
+<div class="abouttext">
+<p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1.3;max-width:30ch;margin-bottom:22px">I turn lending and payment workflows into smooth, reliable Salesforce experiences.</p>
+<p>At Aavas Financiers, an NBFC, I build Apex and Lightning Web Components across payments, REST API integrations and case management. My payment components bring multiple APIs together for payment links, QR codes and external transactions, and the session-resume logic I added across multi-screen LWCs keeps a user's progress intact. That reduced drop-offs and made complex payment scenarios possible to automate.</p>
+<p>I like removing manual effort. My Bulk Case Approvals framework processes 200+ records per transaction within governor limits, which cuts manual clicks and speeds up the case cycle.</p>
+</div>
+</div>
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+<div class="timeline">
+<div class="job"><h3>Salesforce Developer · Aavas Financiers</h3><div class="when">May 2025 – Present</div>
+<ul>
+<li>Turn lending and payment requirements into scalable Apex and LWC features covering REST API integrations, Case Management and Lightning Components.</li>
+<li>Built payment components that integrate multiple REST APIs for payment links, QR code generation and external system transactions.</li>
+<li>Implemented session-resume and state persistence across multi-screen LWCs, reducing user drop-offs and enabling automation of complex payment scenarios.</li>
+<li>Write Apex test classes to meet code-coverage standards and work in Scrum sprints with Jira.</li>
+<li>Use Git and Bitbucket with feature branches and pull-request reviews, moving changes through sandbox, UAT and production.</li>
+</ul></div>
+<div class="job"><h3>Associate Software Developer Intern · Cyntexa Labs</h3><div class="when">November 2024 – April 2025</div>
+<ul>
+<li>Passed internal benchmarks for Salesforce Admin: Flows, Data Security, Data Modeling, Profiles, Roles, Permission Sets and User Setup.</li>
+<li>Built full-stack apps with Admin, Apex and LWC: Student Registration, Toll Management, Football Tournament and Hotel Management.</li>
+<li>Created Reports and Dashboards for case monitoring, cutting manual reporting effort and speeding up decisions.</li>
+</ul></div>
+<div class="job"><h3>Database Intern · MP Office</h3><div class="when">August 2023 – September 2023</div>
+<ul>
+<li>Applied normalization to reduce data redundancy by 30% and tuned SQL queries by up to 25%, keeping 90% of website data operations within enterprise-level performance.</li>
+<li>Developed a Twitter sentiment analysis model in Python to study public discourse on Indian politics.</li>
+</ul></div>
+</div>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="grid">
+<article class="card feat"><h3>End-to-End Loan Lifecycle Payment Integration</h3>
+<p>An API-led integration between LWC components and third-party payment gateways, using RESTful Apex callouts for real-time transactions inside the Loan Origination System.</p>
+<p>An event-driven layer with Platform Events and Queueable/Batch Apex triggers automated payment realization in the Loan Management System.</p>
+<div class="tags"><span>LWC</span><span>REST callouts</span><span>Platform Events</span><span>Queueable</span><span>Batch Apex</span></div></article>
+<article class="card feat"><h3>Bulk Case Approvals Management</h3>
+<p>An approval automation framework built with LWC and Apex controllers that processes 200+ records per transaction within governor limits.</p>
+<p>Dynamic SOQL fetches and filters pending approvals, which cuts manual clicks and shortens the case cycle.</p>
+<div class="tags"><span>LWC</span><span>Apex</span><span>SOQL</span><span>Bulkification</span></div></article>
+</div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="skillrow"><h3>Languages</h3><div class="tags"><span>Apex</span><span>SOQL</span><span>SOSL</span><span>SQL</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>Python</span></div></div>
+<div class="skillrow"><h3>Salesforce</h3><div class="tags"><span>Lightning Web Components</span><span>Apex Triggers</span><span>Batch and Queueable Apex</span><span>Platform Events</span><span>Flows</span><span>REST API callouts</span><span>Apex test classes</span><span>Governor limits</span><span>Admin</span><span>Service Cloud</span></div></div>
+<div class="skillrow"><h3>Tools and process</h3><div class="tags"><span>Git</span><span>Bitbucket</span><span>Jira</span><span>VS Code</span><span>Data Loader</span><span>Loom</span><span>Agile/Scrum</span><span>Sprint planning</span><span>CI/CD concepts</span></div></div>
+<div class="skillrow"><h3>Concepts</h3><div class="tags"><span>Object-oriented programming</span><span>Bulkification</span><span>Asynchronous processing</span></div></div>
+<div class="award"><h3>Salesforce Platform Developer I</h3><p style="margin:0">Certification in progress.</p></div>
+</section>
+
+<section id="beyond">
+<h2>Beyond the code</h2>
+<div class="grid">
+<article class="card"><h3>Founding Organizer, Hack It Sapiens</h3><div class="when" style="color:var(--muted)">December 2022 – Present</div><p>Organized 2 seasons of a 36-hour national hackathon with 135+ teams, 110+ submitted projects, 40+ sponsors and 65+ community partners.</p></article>
+<article class="card"><h3>Captain, Hayagriva Racing Club</h3><div class="when" style="color:var(--muted)">October 2022 – September 2023</div><p>Captained Poornima College's go-kart team in national racing events, including the Buddha International Circuit, and served on the Students' Council.</p></article>
+<article class="card"><h3>Winner, Ideathon at JECRC University</h3><div class="when" style="color:var(--muted)">December 2022</div><p>Won 'Best Project' and a ₹50,000 prize for an IoT smart wheelchair that uses tongue-sensitivity sensors for hands-free mobility.</p></article>
+<article class="card"><h3>Education</h3><p><b>B.Tech, Computer Science</b><br>Poornima College of Engineering, May 2025, CGPA 8/10</p><p style="margin:0">Aravali Public School: CBSE 10th 87.2%, 12th 78.8%</p></article>
+</div>
+</section>
+
+<section id="contact">
+<h2>Let's connect</h2>
+<p>Hiring for a Salesforce role, planning a project or just saying hello? Send me a message below.</p>
+<form id="f" novalidate>
+<label>Your name<input id="n" name="name" autocomplete="name" required></label>
+<label>Your email<input id="e" name="email" type="email" autocomplete="email" required></label>
+<label>Message<textarea id="m" name="message" required></textarea></label>
+<button class="btn main" type="submit" id="send">Send message</button>
+<p class="note" id="s" role="status">Your message goes straight to my inbox.</p>
+</form>
+</section>
+
+</div>
+<footer class="bar"><div class="in">
+<a class="logo" href="#top" aria-label="Peeyush, back to top">peeyush<i>.</i></a>
+<span class="tag">Built with purpose. Always learning.</span>
+<div class="icons">
+<a href="https://linkedin.com/in/peeyushweb" rel="noopener" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM.22 8h4.55v14H.22V8zm7.4 0h4.36v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V22h-4.55v-6.4c0-1.53-.03-3.49-2.13-3.49-2.13 0-2.46 1.66-2.46 3.38V22H7.62V8z"/></svg></a>
+<a href="#contact" aria-label="Contact Peeyush"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+</div>
+<span class="copy">&copy; 2026 Peeyush Gupta</span>
+</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+<script>
+(function(){
+if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+var c=document.getElementById('bg'),x=c.getContext('2d'),W,H,dpr=Math.min(window.devicePixelRatio||1,2),m={x:0,y:0,gx:0,gy:0,a:0,t:0,seen:false},col='1,118,211',fr=0;
+function rgb(){var h=getComputedStyle(document.documentElement).getPropertyValue('--blue').trim().replace('#','');if(h.length==6)col=parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)}
+function size(){W=innerWidth;H=innerHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
+addEventListener('resize',size);
+addEventListener('pointermove',function(e){m.x=e.clientX;m.y=e.clientY;m.t=1;if(!m.seen){m.gx=m.x;m.gy=m.y;m.seen=true}},{passive:true});
+document.documentElement.addEventListener('mouseleave',function(){m.t=0});
+function tick(){
+fr++;if(fr%45==1)rgb();
+x.clearRect(0,0,W,H);
+m.gx+=(m.x-m.gx)*.1;m.gy+=(m.y-m.gy)*.1;m.a+=(m.t-m.a)*.08;
+if(m.a>.01){var g=x.createRadialGradient(m.gx,m.gy,0,m.gx,m.gy,340);g.addColorStop(0,'rgba('+col+','+(.22*m.a).toFixed(3)+')');g.addColorStop(1,'rgba('+col+',0)');x.fillStyle=g;x.fillRect(m.gx-340,m.gy-340,680,680)}
+requestAnimationFrame(tick)}
+size();rgb();tick();
+})();
+var EMAILJS_PUBLIC_KEY='uzF4H8728qSWDq9EC',EMAILJS_SERVICE_ID='service_f3dzc81',EMAILJS_TEMPLATE_ID='template_knkm40g';
+var configured=EMAILJS_PUBLIC_KEY!=='YOUR_PUBLIC_KEY'&&EMAILJS_SERVICE_ID!=='YOUR_SERVICE_ID'&&EMAILJS_TEMPLATE_ID!=='YOUR_TEMPLATE_ID';
+if(window.emailjs&&configured){emailjs.init({publicKey:EMAILJS_PUBLIC_KEY})}
+function toast(msg,bad){var t=document.createElement('div');t.className='toast'+(bad?' bad':'');t.setAttribute('role','status');t.textContent=msg;document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add('show')});setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove()},400)},5000)}
+document.getElementById('f').addEventListener('submit',function(ev){
+ev.preventDefault();
+var n=document.getElementById('n').value.trim(),e=document.getElementById('e').value.trim(),m=document.getElementById('m').value.trim(),s=document.getElementById('s'),btn=document.getElementById('send');
+if(!n||!/^\S+@\S+\.\S+$/.test(e)||!m){s.className='note err';s.textContent='Add your name, a valid email and a message, then send again.';toast('Please fill in your name, a valid email and a message.',true);return}
+if(!window.emailjs||!configured){s.className='note err';s.textContent='The email service could not load. Check your internet connection or ad blocker and try again, or email peeyushgupta002@gmail.com directly.';toast('The email service could not load. Please try again.',true);return}
+btn.disabled=true;btn.textContent='Sending...';s.className='note';s.textContent='';
+emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{from_name:n,from_email:e,reply_to:e,message:m}).then(function(){
+s.className='note ok';s.textContent='Thanks, your message has been sent. I will get back to you soon.';toast('Message sent. Thank you!');document.getElementById('f').reset();btn.disabled=false;btn.textContent='Send message';
+},function(err){
+console.error('EmailJS error',err);var why=err&&err.text?(' ('+err.text+')'):'';s.className='note err';s.textContent='Could not send your message'+why+'. Please try again or email me at peeyushgupta002@gmail.com.';toast('Could not send your message.',true);btn.disabled=false;btn.textContent='Send message';
+});
+});
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1});document.querySelectorAll('.card,.job,.skillrow,.facts span,.award,form').forEach(function(el){el.classList.add('rv');io.observe(el)})}
+</script>
+</body>
+</html>
