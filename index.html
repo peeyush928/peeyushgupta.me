@@ -133,6 +133,10 @@ nav{align-items:baseline}
 .photo{position:relative}
 .photo::before{content:"PG"}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,var(--bg) 0%,transparent 28%),linear-gradient(160deg,color-mix(in srgb,var(--blue) 32%,transparent),transparent 60%)}
+.photo{border:0;box-shadow:0 0 0 1px var(--edge),0 40px 90px -40px var(--blue)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .photo img{filter:brightness(.8) contrast(1.05)}}
+:root[data-theme="dark"] .photo img{filter:brightness(.8) contrast(1.05)}
 </style>
 </head>
 <body>
