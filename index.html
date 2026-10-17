@@ -167,12 +167,17 @@ background:radial-gradient(50% 55% at 50% 62%,rgba(230,208,174,.20),rgba(230,208
 .card.feat .tags{margin-top:auto;padding-top:6px}
 footer.bar{margin-top:120px}
 .bar .icons a{padding:11px;margin:-11px}
+.links{display:contents}
 /* Phone layout */
 @media (max-width:800px){
 html{scroll-padding-top:84px}
-nav{flex-wrap:nowrap;align-items:center;overflow-x:auto;overflow-y:hidden;gap:2px;padding:8px 10px 8px 18px;margin-top:8px;font-size:15px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-nav::-webkit-scrollbar{display:none}
+nav{flex-wrap:nowrap;align-items:center;overflow:visible;gap:0;padding:8px 22px;margin-top:8px;font-size:15px}
+nav .links{display:flex;align-items:center;flex:1 1 auto;min-width:0;gap:2px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 30px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 14px,#000 calc(100% - 30px),transparent 100%)}
+nav .links::-webkit-scrollbar{display:none}
 nav a{white-space:nowrap;flex:none}
+nav .links a:first-child{margin-left:4px}
+nav .links a:last-child{margin-right:24px}
 nav .brand{margin-right:12px}
 nav a:not(.brand){padding:6px 11px}
 .pwrap{width:100%;max-width:340px;margin:0 auto}
@@ -196,7 +201,7 @@ footer.bar{margin-top:72px}
 <body>
 <canvas id="bg" aria-hidden="true"></canvas>
 <div class="wrap">
-<nav aria-label="Main"><a class="brand" href="#top">Peeyush Gupta</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#beyond">Beyond code</a><a href="#contact">Contact</a></nav>
+<nav aria-label="Main"><a class="brand" href="#top">Peeyush Gupta</a><div class="links"><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#beyond">Beyond code</a><a href="#contact">Contact</a></div></nav>
 
 <header class="hero" id="top">
 <div>
