@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Peeyush Gupta, Salesforce Admin and Developer. Apex, Lightning Web Components and API integrations for lending and payment teams.">
+<meta name="theme-color" content="#F5F8F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A1510" media="(prefers-color-scheme: dark)">
 <title>Peeyush</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A7F57'/%3E%3Cpath d='M22 44a9 9 0 0 1-1-17.9A12 12 0 0 1 44 24a10 10 0 0 1 0 20z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap">
@@ -153,7 +156,41 @@ background:radial-gradient(50% 55% at 50% 62%,rgba(230,208,174,.20),rgba(230,208
 .pwrap .brl{left:4%;top:16%}
 .pwrap .brr{right:0;bottom:10%}
 @media (prefers-reduced-motion:no-preference){.photo.pcard::before{animation:ringglow 4.5s ease-in-out infinite}@keyframes ringglow{50%{filter:drop-shadow(0 0 24px rgba(230,208,174,.7))}}}
-@media (max-width:800px){.pwrap{width:100%;margin-left:0;max-width:300px}.photo.pcard{aspect-ratio:1/1.12}.photo.pcard::before{width:88%;border-width:12px}.photo.pcard img{width:92%}.pwrap .br{display:none}}
+@media (max-width:800px){.pwrap{width:100%;margin-left:0;max-width:300px}.photo.pcard{aspect-ratio:1/1.12}.photo.pcard::before{width:88%;border-width:12px}.photo.pcard img{width:92%}}
+
+
+/* Layout polish */
+@media (min-width:668px){#skills h2{order:-2}#skills .skillrow:nth-of-type(2){grid-column:1/-1;order:-1}}
+@media (max-width:987px){#skills .skillrow:nth-of-type(4){grid-column:1/-1}}
+#beyond .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
+.card.feat{display:flex;flex-direction:column}
+.card.feat .tags{margin-top:auto;padding-top:6px}
+footer.bar{margin-top:120px}
+.bar .icons a{padding:11px;margin:-11px}
+/* Phone layout */
+@media (max-width:800px){
+html{scroll-padding-top:84px}
+nav{flex-wrap:nowrap;align-items:center;overflow-x:auto;overflow-y:hidden;gap:2px;padding:8px 10px 8px 18px;margin-top:8px;font-size:15px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{white-space:nowrap;flex:none}
+nav .brand{margin-right:12px}
+nav a:not(.brand){padding:6px 11px}
+.pwrap{width:100%;max-width:340px;margin:0 auto}
+.photo.pcard{width:84%;max-width:none;margin:0 auto}
+.pwrap .brl{left:0;top:10%;width:11%}
+.pwrap .brr{right:0;bottom:16%;width:11%}
+}
+
+@media (max-width:800px){
+body{background-attachment:scroll}
+section{padding:64px 0 8px}
+.hero{padding:48px 0 16px}
+pre{font-size:12.5px;padding:48px 16px 18px}
+nav a:not(.brand){padding:8px 12px}
+footer.bar{margin-top:72px}
+.bar .in{padding:26px 24px}
+.bar .tag{flex-basis:100%;margin-right:0}
+}
 </style>
 </head>
 <body>
@@ -254,7 +291,7 @@ background:radial-gradient(50% 55% at 50% 62%,rgba(230,208,174,.20),rgba(230,208
 
 <section id="contact">
 <h2>Let's connect</h2>
-<p>Hiring for a Salesforce role, planning a project or want to talk about Marvel? Send me a message below.</p>
+<p>Hiring for a Salesforce role, planning a project or just saying hello? Send me a message below.</p>
 <form id="f" novalidate>
 <label>Your name<input id="n" name="name" autocomplete="name" required></label>
 <label>Your email<input id="e" name="email" type="email" autocomplete="email" required></label>
