@@ -190,7 +190,7 @@ nav a:not(.brand){padding:6px 11px}
 body{background-attachment:scroll}
 section{padding:64px 0 8px}
 .hero{padding:48px 0 16px}
-pre{font-size:12.5px;padding:48px 16px 18px}
+pre{font-size:clamp(10.5px,3vw,12.5px);padding:48px 16px 18px}
 nav a:not(.brand){padding:8px 12px}
 footer.bar{margin-top:72px}
 .bar .in{padding:26px 24px}
@@ -210,16 +210,19 @@ footer.bar{margin-top:72px}
 <p>I build Apex, Lightning Web Components and API integrations for lending and payment teams, and ship them through sandbox, UAT and production.</p>
 <div class="btns"><a class="btn main" href="#contact">Get in touch</a><a class="btn alt" href="#projects">See my work</a></div>
 </div>
-<pre aria-label="Sample Apex code"><span class="c">// Bulkified by default</span>
+<pre aria-label="Sample Apex code"><span class="c">// One bad row won't fail all records</span>
 <span class="k">public with sharing class</span> PaymentService {
-  <span class="k">public static void</span> realize(<span class="k">Set</span>&lt;Id&gt; ids) {
-    <span class="k">List</span>&lt;Payment__c&gt; rows = [
-      <span class="k">SELECT</span> Id, Status__c
-      <span class="k">FROM</span> Payment__c
-      <span class="k">WHERE</span> Id <span class="k">IN</span> :ids
-    ];
-    <span class="c">// one DML, one callout queue</span>
-    System.enqueueJob(<span class="k">new</span> RealizeJob(rows));
+  <span class="k">public static void</span> save(
+      <span class="k">List</span>&lt;Payment__c&gt; rows) {
+    <span class="k">List</span>&lt;Database.SaveResult&gt; res =
+      Database.update(rows, <span class="k">false</span>,
+        <span class="k">AccessLevel.USER_MODE</span>);
+    <span class="k">for</span> (<span class="k">Integer</span> i = 0; i &lt; res.size(); i++) {
+      <span class="k">if</span> (!res[i].isSuccess()) {
+        Log.error(rows[i].Id,
+          res[i].getErrors()[0].getMessage());
+      }
+    }
   }
 }</pre>
 </header>
