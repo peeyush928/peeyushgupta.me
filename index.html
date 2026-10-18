@@ -233,7 +233,7 @@ footer.bar{margin-top:72px}
 <div class="pwrap"><svg class="br brl" viewBox="0 0 60 66" aria-hidden="true"><polygon points="54,4 6,33 54,62 54,50 26,33 54,16"/></svg><svg class="br brr" viewBox="0 0 60 66" aria-hidden="true"><polygon points="6,4 54,33 6,62 6,50 34,33 6,16"/></svg><figure class="photo pcard" aria-label="Photo of Peeyush Gupta"><img src="peeyush-cutout.webp" alt="Peeyush Gupta" width="900" height="973"></figure></div>
 <div class="abouttext">
 <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1.3;max-width:30ch;margin-bottom:22px">I turn lending and payment workflows into smooth, reliable Salesforce experiences.</p>
-<p>At Aavas Financiers, an NBFC, I build Apex and Lightning Web Components across payments, REST API integrations and case management. My payment components bring multiple APIs together for payment links, QR codes and external transactions, and the session-resume logic I added across multi-screen LWCs keeps a user's progress intact. That reduced drop-offs and made complex payment scenarios possible to automate.</p>
+<p>At Aavas Financiers, an NBFC, I build Apex and Lightning Web Components across payments, REST API integrations and case management. My payment components bring multiple APIs together for payment links, QR codes and external transactions, and real-time payment realization, I added across multi-screen LWCs keeps a user's progress intact. That reduced drop-offs and made complex payment scenarios possible to automate.</p>
 <p>I like reducing manual effort, and I try to cut down repetitive tasks with automation. My Bulk Case Approvals framework processes 200+ records per transaction within governor limits, which cuts manual clicks and speeds up the case escalation.</p>
 </div>
 </div>
@@ -284,7 +284,7 @@ footer.bar{margin-top:72px}
 <div class="skillrow"><h3>Salesforce</h3><div class="tags"><span>Lightning Web Components</span><span>Apex Triggers</span><span>Batch and Queueable Apex</span><span>Platform Events</span><span>Flows</span><span>REST API callouts</span><span>Apex test classes</span><span>Governor limits</span><span>Admin</span><span>Service Cloud</span></div></div>
 <div class="skillrow"><h3>Tools and process</h3><div class="tags"><span>Git</span><span>Bitbucket</span><span>Jira</span><span>VS Code</span><span>Data Loader</span><span>Loom</span><span>Agile/Scrum</span><span>Sprint planning</span><span>CI/CD concepts</span></div></div>
 <div class="skillrow"><h3>Concepts</h3><div class="tags"><span>Object-oriented programming</span><span>Bulkification</span><span>Asynchronous processing</span></div></div>
-<div class="award"><h3>Salesforce Platform Developer I</h3><p style="margin:0">Exam Scheduled in November.</p></div>
+<div class="award"><h3>Salesforce Platform Developer I</h3><p style="margin:0">Exam scheduled in November.</p></div>
 </section>
 
 <section id="beyond">
@@ -293,7 +293,7 @@ footer.bar{margin-top:72px}
 <article class="card"><h3>Founding Organizer, Hack It Sapiens</h3><div class="when" style="color:var(--muted)">December 2022 – Present</div><p>Organized 2 seasons of a 36-hour national hackathon with 135+ teams, 110+ submitted projects, 40+ sponsors and 65+ community partners.</p></article>
 <article class="card"><h3>Captain, Hayagriva Racing Club</h3><div class="when" style="color:var(--muted)">October 2022 – September 2023</div><p>Captained Poornima College's go-kart team in national racing events, including the Buddha International Circuit, and served on the Students' Council.</p></article>
 <article class="card"><h3>Winner, Ideathon at JECRC University</h3><div class="when" style="color:var(--muted)">December 2022</div><p>Won 'Best Project' and a ₹50,000 prize for an IoT smart wheelchair that uses tongue-sensitivity sensors for hands-free mobility.</p></article>
-<article class="card"><h3>Education</h3><p><b>B.Tech, Computer Science</b><br>Poornima College of Engineering, May 2025, CGPA 8/10</p><p style="margin:0">Aravali Public School: CBSE 10th 87.2%, 12th 78.8%</p></article>
+<article class="card"><h3>Education</h3><p><b>B.Tech, Computer Science</b><br>Poornima College of Engineering, May 2025, CGPA 8/10</p></article>
 </div>
 </section>
 
@@ -323,19 +323,20 @@ footer.bar{margin-top:72px}
 <script>
 (function(){
 if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-var c=document.getElementById('bg'),x=c.getContext('2d'),W,H,dpr=Math.min(window.devicePixelRatio||1,2),m={x:0,y:0,gx:0,gy:0,a:0,t:0,seen:false},col='1,118,211',fr=0;
+var c=document.getElementById('bg'),x=c.getContext('2d'),W,H,dpr=Math.min(window.devicePixelRatio||1,2),m={x:0,y:0,gx:0,gy:0,a:0,t:0,seen:false,last:0,run:false},col='1,118,211',fr=0;
 function rgb(){var h=getComputedStyle(document.documentElement).getPropertyValue('--blue').trim().replace('#','');if(h.length==6)col=parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)}
 function size(){W=innerWidth;H=innerHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
 addEventListener('resize',size);
-addEventListener('pointermove',function(e){m.x=e.clientX;m.y=e.clientY;m.t=1;if(!m.seen){m.gx=m.x;m.gy=m.y;m.seen=true}},{passive:true});
+addEventListener('pointermove',function(e){m.x=e.clientX;m.y=e.clientY;m.t=1;m.last=performance.now();if(!m.seen){m.gx=m.x;m.gy=m.y;m.seen=true}if(!m.run){m.run=true;requestAnimationFrame(tick)}},{passive:true});
 document.documentElement.addEventListener('mouseleave',function(){m.t=0});
-function tick(){
+function tick(now){
 fr++;if(fr%45==1)rgb();
+if(m.t&&now-m.last>600)m.t=0;
 x.clearRect(0,0,W,H);
 m.gx+=(m.x-m.gx)*.1;m.gy+=(m.y-m.gy)*.1;m.a+=(m.t-m.a)*.08;
 if(m.a>.01){var g=x.createRadialGradient(m.gx,m.gy,0,m.gx,m.gy,340);g.addColorStop(0,'rgba('+col+','+(.22*m.a).toFixed(3)+')');g.addColorStop(1,'rgba('+col+',0)');x.fillStyle=g;x.fillRect(m.gx-340,m.gy-340,680,680)}
-requestAnimationFrame(tick)}
-size();rgb();tick();
+if(m.t||m.a>.01){requestAnimationFrame(tick)}else{m.run=false}}
+size();rgb();
 })();
 var EMAILJS_PUBLIC_KEY='uzF4H8728qSWDq9EC',EMAILJS_SERVICE_ID='service_f3dzc81',EMAILJS_TEMPLATE_ID='template_knkm40g';
 var configured=EMAILJS_PUBLIC_KEY!=='YOUR_PUBLIC_KEY'&&EMAILJS_SERVICE_ID!=='YOUR_SERVICE_ID'&&EMAILJS_TEMPLATE_ID!=='YOUR_TEMPLATE_ID';
